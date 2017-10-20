@@ -18,6 +18,33 @@ class V2rayCore < Formula
 
   end
 
+  plist_options :manual => "v2ray -config=#{HOMEBREW_PREFIX}/etc/config.json"
+
+  def plist; <<-EOS.undent
+  <?xml version="1.0" encoding="UTF-8"?>
+  <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+  <plist version="1.0">
+    <dict>
+      <key>KeepAlive</key>
+      <true/>
+      <key>Label</key>
+      <string>#{plist_name}</string>
+      <key>ProgramArguments</key>
+      <array>
+        <string>#{bin}/v2ray</string>
+        <string>-config</string>
+        <string>#{etc}/config.json</string>
+      </array>
+      <key>RunAtLoad</key>
+      <true/>
+    </dict>
+  </plist>
+  EOS
+  end
+  
+  
+
+  
   test do
     # `test do` will create, run in and delete a temporary directory.
     #
