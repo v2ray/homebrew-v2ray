@@ -5,8 +5,8 @@
 class V2rayCore < Formula
   desc "A platform for building proxies to bypass network restrictions."
   homepage "https://www.v2ray.com/"
-  url "https://github.com/v2ray/v2ray-core/releases/download/v2.41/v2ray-macos.zip"
-  sha256 "0c49b05787bce5a8a181b4d2df2df1a4617c7d617165f6fbff2657fba0bc8439"
+  url "https://github.com/v2ray/v2ray-core/releases/download/v2.43/v2ray-macos.zip"
+  sha256 "af885e6fedd93882f945840508e08755f6cc129739db922c7f26e7561ed8e394"
 
   # depends_on "cmake" => :build
 
@@ -41,10 +41,10 @@ class V2rayCore < Formula
   </plist>
   EOS
   end
-  
-  
 
-  
+
+
+
   test do
     # `test do` will create, run in and delete a temporary directory.
     #
