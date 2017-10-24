@@ -36,3 +36,17 @@ step 4: run v2ray
 ```bash
 brew services run v2ray-core
 ```
+
+#### Update
+
+step 1:
+
+```bash
+brew update
+```
+
+step 2:
+
+```bash
+brew upgrade v2ray-core
+```
