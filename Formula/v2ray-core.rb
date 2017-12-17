@@ -7,7 +7,7 @@ class V2rayCore < Formula
   homepage "https://www.v2ray.com/"
   url "https://github.com/v2ray/v2ray-core/releases/download/v3.2/v2ray-macos.zip"
   version "3.2"
-  sha256 "ce8a526b7c2b7855350bba0efb335061248be84b6de2201af10e1c95cadf27ec"
+  sha256 "da4330327228995e1f7e0c31fdecaea013d6fa575dd5bb31a3e4b23cfe5c7db3"
 
   # depends_on "cmake" => :build
 
