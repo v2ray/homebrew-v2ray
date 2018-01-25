@@ -7,6 +7,7 @@ before_install:
   - curl -L  $url > v2ray-macos.zip
   - sign=$(sha256sum v2ray-macos.zip |cut  -d ' ' -f 1)
   - ver=$(curl -s https://api.github.com/repos/v2ray/v2ray-core/releases/latest |grep tag_name |cut -d '"' -f 4)
+  - ver=$(echo ${ver:1})
   - git clone https://github.com/Doublemine/homebrew-v2ray.git
 
 script:
