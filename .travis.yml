@@ -2,5 +2,8 @@ sudo: required
 
 before_install:
   - url=$(curl -s https://api.github.com/repos/v2ray/v2ray-core/releases/latest | grep "browser_download_url.*macos.zip" | cut -d '"' -f 4)
-  - wget -qi - $url
+  - curl -L  $url > v2ray-macos.zip
   - git clone https://github.com/Doublemine/homebrew-v2ray.git
+
+install:
+  - sha256sum 
