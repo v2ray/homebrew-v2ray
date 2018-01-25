@@ -31,6 +31,8 @@ class V2rayCore < Formula
     <dict>
       <key>KeepAlive</key>
       <true/>
+      <key>RunAtLoad</key>
+      <true/>
       <key>Label</key>
       <string>#{plist_name}</string>
       <key>ProgramArguments</key>
@@ -39,8 +41,6 @@ class V2rayCore < Formula
         <string>-config</string>
         <string>#{etc}/config.json</string>
       </array>
-      <key>RunAtLoad</key>
-      <true/>
     </dict>
   </plist>
   EOS
