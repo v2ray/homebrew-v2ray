@@ -5,9 +5,9 @@
 class V2rayCore < Formula
   desc "A platform for building proxies to bypass network restrictions."
   homepage "https://www.v2ray.com/"
-  url "https://github.com/v2ray/v2ray-core/releases/download/v3.8/v2ray-macos.zip"
-  version "3.8"
-  sha256 "266eae4c7c7e011cb92620aeb32ede8cd5ae23a1c47660d5cb1b49a0ed8e9fb0"
+  url "https://github.com/v2ray/v2ray-core/releases/download/v3.9/v2ray-macos.zip"
+  version "3.9"
+  sha256 "83c83f8b863a56ef5e15d49def86f71f460485c35f9ddd7d636143baee92e727"
 
   # depends_on "cmake" => :build
 
