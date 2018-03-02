@@ -8,7 +8,7 @@ before_install:
   - sign=$(sha256sum v2ray-macos.zip |cut  -d ' ' -f 1)
   - ver=$(curl -s https://api.github.com/repos/v2ray/v2ray-core/releases/latest |grep tag_name |cut -d '"' -f 4)
   - ver=$(echo ${ver:1})
-  - git clone https://github.com/Doublemine/homebrew-v2ray.git
+  - git clone https://github.com/v2ray/homebrew-v2ray.git
 
 script:
   - sed -i "s#^\s*url.*#  url \"$url\"#g" homebrew-v2ray/Formula/v2ray-core.rb
