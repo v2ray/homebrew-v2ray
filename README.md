@@ -4,10 +4,9 @@
 The homebrew tap for v2ray-core.
 
 
+
 ### Install v2ray-core
 
-
-Install v2ray-core via homebrew
 
 step 1: Add official tap
 
@@ -53,7 +52,7 @@ step 2: run v2ray-core without starting at login.
 brew services run v2ray-core
 ```
 
-or run v2ray-core register it to launch at login via:
+or run v2ray-core and register it to launch at login via:
 
 ```bash
 brew services start v2ray-core
