@@ -1,7 +1,8 @@
-### homebrew v2ray
+### homebrew v2ray  [![Build Status](https://travis-ci.org/v2ray/homebrew-v2ray.svg?branch=master)](https://travis-ci.org/v2ray/homebrew-v2ray)
 
 
 The homebrew tap for v2ray-core.
+
 
 
 
