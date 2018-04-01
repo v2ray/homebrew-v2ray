@@ -1,19 +1,12 @@
-sudo: required
+language: generic
 
 before_install:
   - git config --global user.name "$USERNAME" 
   - git config --global user.email "$EMAIL"
-  - url=$(curl -s https://api.github.com/repos/v2ray/v2ray-core/releases/latest | grep "browser_download_url.*macos.zip" | cut -d '"' -f 4)
-  - curl -L  $url > v2ray-macos.zip
-  - sign=$(sha256sum v2ray-macos.zip |cut  -d ' ' -f 1)
-  - ver=$(curl -s https://api.github.com/repos/v2ray/v2ray-core/releases/latest |grep tag_name |cut -d '"' -f 4)
-  - ver=$(echo ${ver:1})
-  - git clone https://github.com/v2ray/homebrew-v2ray.git
 
 script:
-  - sed -i "s#^\s*url.*#  url \"$url\"#g" homebrew-v2ray/Formula/v2ray-core.rb
-  - sed -i "s#^\s*sha256.*#  sha256 \"$sign\"#g" homebrew-v2ray/Formula/v2ray-core.rb
-  - sed -i "s#^\s*version.*#  version \"$ver\"#g" homebrew-v2ray/Formula/v2ray-core.rb
+  - chmod +x checker.sh
+  - ./checker.sh
 
 after_success:
   - cd homebrew-v2ray
