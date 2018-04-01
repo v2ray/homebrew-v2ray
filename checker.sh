@@ -14,8 +14,8 @@ DOWNLOAD_URL=$(curl -s https://api.github.com/repos/v2ray/v2ray-core/releases/la
 
 if [ -z $DOWNLOAD_URL ]; then
 
-    log 'parser download url error'
-    exit 1
+    log 'parser download url error, skip update.'
+    exit 0
 
 fi
 
@@ -24,7 +24,7 @@ log "download url: $DOWNLOAD_URL  start downloading..."
 curl -L  $DOWNLOAD_URL > v2ray-macos.zip
 
 
-if [! -e v2ray-macos.zip ]; then
+if [! -f v2ray-macos.zip ]; then
     log "file download failed!"
     exit 1
 fi
