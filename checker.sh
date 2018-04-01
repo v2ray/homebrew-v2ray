@@ -46,4 +46,10 @@ sed -i "s#^\s*url.*#  url \"$DOWNLOAD_URL\"#g" homebrew-v2ray/Formula/v2ray-core
 sed -i "s#^\s*sha256.*#  sha256 \"$V_HASH256\"#g" homebrew-v2ray/Formula/v2ray-core.rb
 sed -i "s#^\s*version.*#  version \"$V_VERSION\"#g" homebrew-v2ray/Formula/v2ray-core.rb
 
-log "update done."
+log "update config done. start update repo..."
+
+cd homebrew-v2ray
+git commit -am "travis automated update version $V_VERSION"
+git push  --quiet "https://${GH_TOKEN}@${GH_REF}" master:master
+
+log "update repo done."
