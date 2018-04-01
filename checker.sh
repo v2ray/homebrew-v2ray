@@ -24,7 +24,7 @@ log "download url: $DOWNLOAD_URL  start downloading..."
 curl -L  $DOWNLOAD_URL > v2ray-macos.zip
 
 
-if [! -f v2ray-macos.zip ]; then
+if [ ! -e v2ray-macos.zip ]; then
     log "file download failed!"
     exit 1
 fi
