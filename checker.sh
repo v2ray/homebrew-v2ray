@@ -8,9 +8,21 @@ log(){
     echo ''
 }
 
+loop_parser(){
+    while true
+    do
+       result=$(curl -s https://api.github.com/repos/v2ray/v2ray-core/releases/latest | grep "$1" | cut -d '"' -f 4)
+       if [ ! -z result ]; then
+        echo $result
+        break
+       fi
+       log "retry to parser $1"
+    done
+}
+
 log 'parser v2ray download url'
 
-DOWNLOAD_URL=$(curl -s https://api.github.com/repos/v2ray/v2ray-core/releases/latest | grep "browser_download_url.*macos.zip" | cut -d '"' -f 4)
+DOWNLOAD_URL=$( loop_parser "browser_download_url.*macos.zip" )
 
 if [ -z $DOWNLOAD_URL ]; then
 
@@ -33,7 +45,7 @@ V_HASH256=$(sha256sum v2ray-macos.zip |cut  -d ' ' -f 1)
 
 log "file hash: $V_HASH256 parser v2ray-core version..."
 
-V_VERSION=$(curl -s https://api.github.com/repos/v2ray/v2ray-core/releases/latest |grep tag_name |cut -d '"' -f 4)
+V_VERSION=$( loop_parser "tag_name" )
 V_VERSION=$(echo ${V_VERSION:1})
 
 log "file version: $V_VERSION start clone..."
