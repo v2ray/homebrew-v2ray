@@ -16,7 +16,6 @@ loop_parser(){
         echo $result
         break
        fi
-       log "retry to parser $1"
     done
 }
 
