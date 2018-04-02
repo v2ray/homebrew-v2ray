@@ -48,6 +48,14 @@ log "file hash: $V_HASH256 parser v2ray-core version..."
 V_VERSION=$( loop_parser "tag_name" )
 V_VERSION=$(echo ${V_VERSION:1})
 
+if [ -z $V_VERSION ]; then
+
+    log 'parser file version error, skip update.'
+    exit 0
+
+fi
+
+
 log "file version: $V_VERSION start clone..."
 
 git clone https://github.com/v2ray/homebrew-v2ray.git
