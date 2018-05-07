@@ -39,12 +39,12 @@ brew upgrade v2ray-core
 
 once you installed, you can run command via `v2ray` to run v2ray-core.
 
-The defualt config file location is:`/usr/local/etc/config.json`
+The defualt config file location is:`/usr/local/etc/v2ray/config.json`
 
 step 1: edit the default config:
 
 ```bash
-vim /usr/local/etc/config.json
+vim /usr/local/etc/v2ray/config.json
 ```
 
 step 2: run v2ray-core without starting at login.
