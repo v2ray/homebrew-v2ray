@@ -18,7 +18,7 @@ class V2rayCore < Formula
     bin.install "geoip.dat"
     bin.install "geosite.dat"
 
-    etc.install "config.json"
+    etc.install "v2ray/config.json"
 
   end
 
