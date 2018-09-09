@@ -1,5 +1,8 @@
 language: generic
 
+sudo: required
+
+
 before_install:
   - git config --global user.name "$USERNAME" 
   - git config --global user.email "$EMAIL"
