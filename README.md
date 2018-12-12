@@ -49,8 +49,10 @@ brew uninstall v2ray-core
 step 2: untap official formula
 
 ```bash
-v2ray/v2ray
+brew untap v2ray/v2ray
 ```
+
+------
 
 ### Usage
 
