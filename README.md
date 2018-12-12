@@ -4,6 +4,7 @@
 The homebrew tap for v2ray-core.
 
 
+------
 
 
 ### Install v2ray-core
@@ -33,6 +34,22 @@ step 2: update v2ray-core
 
 ```bash
 brew upgrade v2ray-core
+```
+
+------
+
+### Uninstall v2ray-core
+
+step 1: uninstall core
+
+```bash
+brew uninstall v2ray-core
+```
+
+step 2: untap official formula
+
+```bash
+v2ray/v2ray
 ```
 
 ### Usage
