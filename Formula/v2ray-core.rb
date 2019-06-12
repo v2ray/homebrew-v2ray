@@ -40,9 +40,9 @@ class V2rayCore < Formula
       <string>#{plist_name}</string>
       <key>ProgramArguments</key>
       <array>
-        <string>/bin/sh</string>
-        <string>-c</string>
-        <string>#{bin}/v2ray -config "${V2RAY_CONFIG:-#{etc}/v2ray/config.json}"</string>
+        <string>#{bin}/v2ray</string>
+        <string>-config</string>
+        <string>#{etc}/v2ray/config.json</string>
       </array>
     </dict>
   </plist>
