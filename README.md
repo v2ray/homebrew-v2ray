@@ -78,6 +78,9 @@ or run v2ray-core and register it to launch at login via:
 brew services start v2ray-core
 ```
 
+to specify your own configuration file, please use `V2RAY_CONFIG` environment variable:
 
-
-
+```bash
+launchctl setenv V2RAY_CONFIG <CONFIG_FILE>
+brew services restart v2ray-core # don't forget restart the service.
+```
