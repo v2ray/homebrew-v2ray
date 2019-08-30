@@ -7,7 +7,7 @@ class V2rayCore < Formula
   homepage "https://www.v2ray.com/"
   url "https://github.com/v2ray/v2ray-core/releases/download/v4.20.0/v2ray-macos.zip"
   version "4.20.0"
-  sha256 "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  sha256 "18629a1453c504a954c3aa0f25f219c92a56cb54b3353411360bb5a59707edf7"
 
 
 
