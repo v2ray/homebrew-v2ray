@@ -32,8 +32,7 @@ fi
 
 log "download url: $DOWNLOAD_URL  start downloading..."
 
-curl -L  $DOWNLOAD_URL > v2ray-macos.zip
-
+curl -s -L $DOWNLOAD_URL > v2ray-macos.zip || { log 'file download failed!' ; exit 1; }
 
 if [ ! -e v2ray-macos.zip ]; then
     log "file download failed!"
