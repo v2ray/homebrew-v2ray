@@ -6,7 +6,7 @@ sudo: required
 before_install:
   - git config --global user.name "$USERNAME" 
   - git config --global user.email "$EMAIL"
-  - apt-get install -y jq
+  - sudo apt-get install -y jq
 
 script:
   - chmod +x checker.sh
