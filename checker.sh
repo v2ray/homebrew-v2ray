@@ -11,7 +11,7 @@ log(){
 loop_parser(){
     while true
     do
-        result=$(curl -s https://api.github.com/repos/v2ray/v2ray-core/releases/latest | grep "$1" | cut -d '"' -f 4)
+        result=$(curl -s -H "Accept: application/vnd.github.v3+json" https://api.github.com/repos/v2ray/v2ray-core/releases/latest | grep "$1" | cut -d '"' -f 4)
         if [ ! -z "$result" ]; then
             echo $result
             break

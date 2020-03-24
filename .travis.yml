@@ -1,7 +1,11 @@
 language: generic
 
-sudo: required
+dist: xenial
 
+os: linux
+
+notifications:
+  email: false
 
 before_install:
   - git config --global user.name "$USERNAME" 
