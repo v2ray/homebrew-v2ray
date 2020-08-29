@@ -11,7 +11,7 @@ log(){
 loop_parser(){
     while true
     do
-        result=$(curl -s -H "Accept: application/vnd.github.v3+json" https://api.github.com/repos/v2ray/v2ray-core/releases/latest | grep "$1" | cut -d '"' -f 4)
+        result=$(curl -s -H "Accept: application/vnd.github.v3+json" https://api.github.com/repos/v2fly/v2ray-core/releases/latest | grep "$1" | cut -d '"' -f 4)
         if [ ! -z "$result" ]; then
             echo $result
             break
@@ -21,7 +21,7 @@ loop_parser(){
 
 log 'parser v2ray download url'
 
-DOWNLOAD_URL=$( loop_parser 'browser_download_url.*macos.zip"$' )
+DOWNLOAD_URL=$( loop_parser 'browser_download_url.*macos-64.zip"$' )
 
 if [ -z "$DOWNLOAD_URL" ]; then
     
@@ -32,14 +32,14 @@ fi
 
 log "download url: $DOWNLOAD_URL  start downloading..."
 
-curl -s -L $DOWNLOAD_URL > v2ray-macos.zip || { log 'file download failed!' ; exit 1; }
+curl -s -L $DOWNLOAD_URL > v2ray-macos-64.zip || { log 'file download failed!' ; exit 1; }
 
-if [ ! -e v2ray-macos.zip ]; then
+if [ ! -e v2ray-macos-64.zip ]; then
     log "file download failed!"
     exit 1
 fi
 
-V_HASH256=$(sha256sum v2ray-macos.zip |cut  -d ' ' -f 1)
+V_HASH256=$(sha256sum v2ray-macos-64.zip |cut  -d ' ' -f 1)
 
 log "file hash: $V_HASH256 parser v2ray-core version..."
 
