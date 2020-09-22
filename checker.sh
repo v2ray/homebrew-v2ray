@@ -12,8 +12,8 @@ loop_parser(){
     while true
     do
         result=$(curl -s -H "Accept: application/vnd.github.v3+json" https://api.github.com/repos/v2fly/v2ray-core/releases/latest | grep "$1" | cut -d '"' -f 4)
-        if [ ! -z "$result" ]; then
-            echo $result
+        if [ -n "$result" ]; then
+            echo "$result"
             break
         fi
     done
@@ -32,7 +32,7 @@ fi
 
 log "download url: $DOWNLOAD_URL  start downloading..."
 
-curl -s -L $DOWNLOAD_URL > v2ray-macos-64.zip || { log 'file download failed!' ; exit 1; }
+curl -s -L "$DOWNLOAD_URL" > v2ray-macos-64.zip || { log 'file download failed!' ; exit 1; }
 
 if [ ! -e v2ray-macos-64.zip ]; then
     log "file download failed!"
@@ -44,7 +44,7 @@ V_HASH256=$(sha256sum v2ray-macos-64.zip |cut  -d ' ' -f 1)
 log "file hash: $V_HASH256 parser v2ray-core version..."
 
 V_VERSION=$( loop_parser "tag_name" )
-V_VERSION=$(echo ${V_VERSION:1})
+V_VERSION="${V_VERSION:1}"
 
 if [ -z "$V_VERSION" ]; then
     
@@ -66,7 +66,7 @@ sed -i "s#^\s*version.*#  version \"$V_VERSION\"#g" homebrew-v2ray/Formula/v2ray
 
 log "update config done. start update repo..."
 
-cd homebrew-v2ray
+cd homebrew-v2ray || exit
 git commit -am "travis automated update version $V_VERSION"
 git push  --quiet "https://${GH_TOKEN}@${GH_REF}" master:master
 
