@@ -62,6 +62,7 @@ log "update config...."
 
 sed -i "s#^\s*url.*#  url \"$DOWNLOAD_URL\"#g" homebrew-v2ray/Formula/v2ray-core.rb
 sed -i "s#^\s*sha256.*#  sha256 \"$V_HASH256\"#g" homebrew-v2ray/Formula/v2ray-core.rb
+sed -i "s#^\s*version.*#  version \"$V_VERSION\"#g" homebrew-v2ray/Formula/v2ray-core.rb
 
 log "update config done. start update repo..."
 
