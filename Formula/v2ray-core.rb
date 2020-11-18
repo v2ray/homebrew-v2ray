@@ -1,28 +1,16 @@
-# Documentation: https://docs.brew.sh/Formula-Cookbook.html
-#                http://www.rubydoc.info/github/Homebrew/brew/master/Formula
-# PLEASE REMOVE ALL GENERATED COMMENTS BEFORE SUBMITTING YOUR PULL REQUEST!
-
 class V2rayCore < Formula
   desc "A platform for building proxies to bypass network restrictions."
   homepage "https://www.v2fly.org/"
   url "https://github.com/v2fly/v2ray-core/releases/download/v4.32.1/v2ray-macos-64.zip"
-  version "4.32.1"
   sha256 "8fabf66de1cb15817ee0650f345f67bcecd82c32c587e5e5e0c82a7943a10e76"
-
-
-
-  # depends_on "cmake" => :build
+  license "MIT"
 
   def install
-
     bin.install "v2ray"
     bin.install "v2ctl"
-    bin.install "geoip.dat"
-    bin.install "geosite.dat"
-
-    (etc/"v2ray").mkpath
-    etc.install "config.json" => "v2ray/config.json"
-
+    (etc/"v2ray").install "config.json"
+    (etc/"v2ray").install "geoip.dat"
+    (etc/"v2ray").install "geosite.dat"
   end
 
   plist_options :manual => "v2ray -config=#{HOMEBREW_PREFIX}/etc/v2ray/config.json"
@@ -49,19 +37,10 @@ class V2rayCore < Formula
   EOS
   end
 
-
-
-
   test do
-    # `test do` will create, run in and delete a temporary directory.
-    #
-    # This test will fail and we won't accept that! For Homebrew/homebrew-core
-    # this will need to be a test that verifies the functionality of the
-    # software. Run the test with `brew test v2ray-core`. Options passed
-    # to `brew install` such as `--HEAD` also need to be provided to `brew test`.
-    #
-    # The installed folder is not in the path, so use the entire path to any
-    # executables being tested: `system "#{bin}/program", "do", "something"`.
-    system "#{bin}/v2ray", "-version"
+    config = "{\"log\":{\"access\":\"#{testpath}/log\"}}"
+    output = shell_output "echo '#{config}' | #{bin}/v2ray -test"
+    assert_match "Configuration OK", output
+    assert_predicate testpath/"log", :exist?
   end
 end
