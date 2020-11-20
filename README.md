@@ -3,6 +3,7 @@
 
 The homebrew tap for v2ray-core.
 
+> **NOTE:** v2ray-core has entered [homebrew-core](https://github.com/Homebrew/homebrew-core), we suggest most users installing with `brew install v2ray`. However, if you need `brew services`, use this tap instead.
 
 ------
 
@@ -77,7 +78,3 @@ or run v2ray-core and register it to launch at login via:
 ```bash
 brew services start v2ray-core
 ```
-
-
-
-
