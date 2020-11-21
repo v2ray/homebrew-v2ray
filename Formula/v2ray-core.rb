@@ -4,14 +4,14 @@ class V2rayCore < Formula
   url "https://github.com/v2fly/v2ray-core/releases/download/v4.32.1/v2ray-macos-64.zip"
   version "4.32.1"
   sha256 "8fabf66de1cb15817ee0650f345f67bcecd82c32c587e5e5e0c82a7943a10e76"
-  license "MIT"
+  license all_of: ["MIT", "CC-BY-SA-4.0"]
 
   def install
     bin.install "v2ray"
     bin.install "v2ctl"
-    (etc/"v2ray").install "config.json"
-    (etc/"v2ray").install "geoip.dat"
-    (etc/"v2ray").install "geosite.dat"
+    pkgetc.install "config.json"
+    pkgshare.install "geoip.dat"
+    pkgshare.install "geosite.dat"
   end
 
   plist_options :manual => "v2ray -config=#{HOMEBREW_PREFIX}/etc/v2ray/config.json"
@@ -39,9 +39,39 @@ class V2rayCore < Formula
   end
 
   test do
-    config = "{\"log\":{\"access\":\"#{testpath}/log\"}}"
-    output = shell_output "echo '#{config}' | #{bin}/v2ray -test"
+    (testpath/"config.json").write <<~EOS
+      {
+        "log": {
+          "access": "#{testpath}/log"
+        },
+        "outbounds": [
+          {
+            "protocol": "freedom",
+            "tag": "direct"
+          }
+        ],
+        "routing": {
+          "rules": [
+            {
+              "ip": [
+                "geoip:private"
+              ],
+              "outboundTag": "direct",
+              "type": "field"
+            }
+          ]
+        }
+      }
+    EOS
+    output = shell_output "#{bin}/v2ray -c #{testpath}/config.json -test"
+
     assert_match "Configuration OK", output
     assert_predicate testpath/"log", :exist?
   end
+
+  caveats <<~EOS
+    v2ray-core has entered homebrew-core (https://github.com/Homebrew/homebrew-core).
+    We suggest most users installing it with `brew install v2ray`.
+    If you want to use `brew services`, you can continue to use this formula.
+  EOS
 end
