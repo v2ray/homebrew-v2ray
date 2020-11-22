@@ -68,10 +68,12 @@ class V2rayCore < Formula
     assert_match "Configuration OK", output
     assert_predicate testpath/"log", :exist?
   end
-
-  caveats <<~EOS
-    v2ray-core has entered homebrew-core (https://github.com/Homebrew/homebrew-core).
-    We suggest most users installing it with `brew install v2ray`.
-    If you want to use `brew services`, you can continue to use this formula.
-  EOS
+  
+  def caveats
+    <<~EOS
+      v2ray-core has entered homebrew-core (https://github.com/Homebrew/homebrew-core).
+      We suggest most users installing it with `brew install v2ray`.
+      If you want to use `brew services`, you can continue to use this formula.
+    EOS
+  end
 end
