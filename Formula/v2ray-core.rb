@@ -1,20 +1,22 @@
 class V2rayCore < Formula
-  desc "A platform for building proxies to bypass network restrictions."
+  desc "Platform for building proxies to bypass network restrictions"
   homepage "https://www.v2fly.org/"
-  url "https://github.com/v2fly/v2ray-core/releases/download/v4.32.1/v2ray-macos-64.zip"
-  version "4.32.1"
-  sha256 "8fabf66de1cb15817ee0650f345f67bcecd82c32c587e5e5e0c82a7943a10e76"
+  url "https://github.com/v2fly/v2ray-core/releases/download/v4.33.0/v2ray-macos-64.zip"
+  version "4.33.0"
+  sha256 "4508619bba84e0b6719b7b66a5421a0590c5b5bb8f29b6bfd7392a30610d5127"
   license all_of: ["MIT", "CC-BY-SA-4.0"]
 
   def install
     bin.install "v2ray"
     bin.install "v2ctl"
+
     pkgetc.install "config.json"
+
     pkgshare.install "geoip.dat"
     pkgshare.install "geosite.dat"
   end
 
-  plist_options :manual => "v2ray -config=#{HOMEBREW_PREFIX}/etc/v2ray/config.json"
+  plist_options manual: "v2ray -config=#{HOMEBREW_PREFIX}/etc/v2ray/config.json"
 
   def plist; <<~EOS
   <?xml version="1.0" encoding="UTF-8"?>
@@ -72,8 +74,8 @@ class V2rayCore < Formula
   def caveats
     <<~EOS
       v2ray-core has entered homebrew-core (https://github.com/Homebrew/homebrew-core).
-      We suggest most users installing it with `brew install v2ray`.
-      If you want to use `brew services`, you can continue to use this formula.
+      We suggest installing v2ray-core with `brew install v2ray`.
+      However, you can continue using this formula.
     EOS
   end
 end

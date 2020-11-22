@@ -5,9 +5,9 @@ The homebrew tap for v2ray-core.
 
 > **NOTE:** v2ray-core has entered [homebrew-core](https://github.com/Homebrew/homebrew-core).
 >
-> We suggest most users installing it with `brew install v2ray`.
+> We suggest installing v2ray-core with `brew install v2ray`.
 >
-> If you want to use `brew services`, you can continue to use this tap.
+> However, you can continue using this tap.
 
 ------
 
