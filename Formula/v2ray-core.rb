@@ -1,9 +1,9 @@
 class V2rayCore < Formula
   desc "Platform for building proxies to bypass network restrictions"
   homepage "https://www.v2fly.org/"
-  url "https://github.com/v2fly/v2ray-core/releases/download/v4.37.3/v2ray-macos-64.zip"
-  version "4.37.3"
-  sha256 "1498bb0e9f687064f6b42e6cd5f2e6e4b8155fdc8cd3bf016e6fdeec313e5892"
+  url "https://github.com/v2fly/v2ray-core/releases/download/v4.38.3/v2ray-macos-64.zip"
+  version "4.38.3"
+  sha256 "29bac4929f62f6e3ac9405cabf3ebfc08bebb9af33580d9a134c30d290f597f2"
   license all_of: ["MIT", "CC-BY-SA-4.0"]
 
   def install
